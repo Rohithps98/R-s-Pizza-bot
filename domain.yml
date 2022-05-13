@@ -1,0 +1,197 @@
+version: '2.0'
+intents:
+  - greet
+  - affirm
+  - deny
+  - vegetarian
+  - nonvegetarian
+  - side
+  - order_vegpizza:
+      triggers: form_action_pizza
+  - order_nvegpizza:
+      triggers: form_action_pizza
+  - order_side_menu:
+      triggers: form_action_pizza
+  - psize
+  - pcrust
+  - ptopping
+  - goodbye
+  - pquantity
+  - provide_name
+  - bot
+  - provide_number
+  - out_of_scope
+  - ask_order
+  - order_pizza:
+      triggers: form_action_pizza
+  - food:
+      triggers: form_action_pizza
+  - location_intent
+
+
+
+
+entities:
+  - name
+  - topping
+  - side
+  - vegpizza
+  - nvegpizza
+  - size
+  - crust_type
+  - quantity
+  - number
+  - food
+  - location
+  - GPE
+slots:
+  topping:
+    type: unfeaturized
+  side:
+    type: unfeaturized
+  vegpizza:
+    type: text
+  nvegpizza:
+    type: text
+  name:
+    type: unfeaturized
+  size:
+    type: unfeaturized
+  crust_type:
+    type: unfeaturized
+  quantity:
+    type: unfeaturized
+  number:
+    type: unfeaturized
+  food:
+    type: unfeaturized
+  location:
+    type: unfeaturized
+  trail_count:
+    type: unfeaturized
+  location_id:
+    type: unfeaturized
+  restaurant_name:
+    type: unfeaturized
+
+
+actions:
+  - utter_greet
+  - utter_veg_non_veg
+  - utter_veg
+  - utter_non_veg
+  - utter_ask_name
+  - utter_ask_size
+  - utter_ask_side
+  - utter_ask_food
+  - utter_ask_topping
+  - utter_ask_crust_type
+  - utter_ask_quantity
+  - utter_food
+  # - utter_npizza
+  - utter_side
+  - utter_sideorder
+  - utter_thanks
+  - utter_goodbye
+  - utter_out_of_scope
+  - utter_iamabot
+  - utter_ask_number
+  - action_order_id
+  - action_submit_side
+  - action_submit_pizza
+responses:
+  utter_greet:
+  - text: "Hi, This is R's Pizza bot, A good pizza can change your mood !!!"
+  utter_veg_non_veg:
+  - text: "what do you like to have, we are specialists in Veg Pizza or Non Veg Pizza or Side Dishes?"
+  - text: "what would you prefer veg Pizza or non-veg Pizza, Or any Side Dish?"
+  - text: "Would you love Veg Pizza or Non Veg Pizza or Side Dishes?"
+
+  utter_veg:
+  - text: "We have Cheese Pizza, Corn Pizza, Mexican Pizza, Panner Pizza, which one do you like to have?"
+  utter_non_veg:
+  - text: "We have Chicken Pizza, Peri Peri Pizza, Bacon Pizza, which one do you like to have?"
+  utter_side:
+  - text: "We have Desserts, Garlic Bread, choco lava cake and Chocolate drink, which one do you like to have?"
+
+  utter_thanks:
+  - text: "Thank you {name}!. Your order is now in our kitchen. Your order no is {order}."
+  utter_goodbye:
+  - text: "Goodbye {name}!. Hope you enjoy your meal."
+
+
+  utter_ask_food:
+  - text: "which Pizza Would you like to try from the above List?"
+
+  utter_ask_side:
+  - text: "Which Side Dish Would you like from the above list?"
+  utter_ask_size:
+  - text: "What size of Pizza, do you like to have- 1) Regular 2) Medium 3) Large"
+
+
+  utter_ask_quantity:
+  - text: "How many quantities do you want?"
+  - text: "How many quantities do you like to have?"
+
+  utter_ask_crust_type:
+  - text: "What type of Pizza Crust Do you like to have? 1) New Hand Tossed  2) Fresh Pan 3) Normal 4) Cheese Burst"
+
+  utter_ask_name:
+  - text: "May I know your name please?"
+  - text: "Can you provide us your name please?"
+  - text: "What is your name?"
+  - text: "Your Name??"
+
+
+  utter_ask_number:
+  - text: "May I know your Phone Number please?"
+  - text: "How to contact you?"
+  utter_ask_topping:
+  - text: "Any Extra Toppings do you like to have on your pizza?  1) Olives 2) Meat- chicken, beef, ham 3) Onions 4) Tomatoes 5) Corn 6) None"
+
+
+  utter_food:
+  - text: "Your order: {quantity} {size} sized {food} pizza with extra {topping} and {crust_type} Crust from {restaurant_name} in {location} will be ready Soon! Please Be Patient."
+  
+  utter_sideorder:
+  - text: "You order: {quantity} {side} from {restaurant_name} in {location} will be ready Soon! Please Be Patient."
+  utter_iamabot:
+  - text: "I am R's PizzaBot"
+  utter_out_of_scope:
+  - text: "Sorry Didn't Quite Get you, please rephrase the sentence"
+
+forms:
+- form_info_pizza
+- form_action_pizza
+  # food:
+  #   - type: from_entity
+  #     entity: food
+  # size:
+  #   - type: from_entity
+  #     entity: size
+  # topping:
+  #   - type: from_entity
+  #     entity: topping
+  # name:
+  #   - type: from_entity
+  #     entity: name
+  # crust_type:
+  #   - type: from_entity
+  #     entity: crust_type
+  # quantity:
+  #   - type: from_entity
+  #     entity: quantity
+- form_info_side
+  # side:
+  #   - type: from_entity
+  #     entity: side
+  # name:
+  #   - type: from_entity
+  #     entity: name
+  # quantity:
+  #   - type: from_entity
+  #     entity: quantity
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
